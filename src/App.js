@@ -12,18 +12,63 @@ import './App.css'
 import NxtWatchContext from './context/NxtWatchContext'
 
 // Replace your code here
+
 class App extends Component {
-  state = {isDarkTheme: true}
+  state = {
+    isDarkTheme: false,
+    isLiked: false,
+    isDisliked: false,
+    isSaved: false,
+    savedVideos: [],
+  }
 
   changeTheme = () => {
     this.setState(prevState => ({isDarkTheme: !prevState.isDarkTheme}))
   }
 
+  updateLikeStatus = () => {
+    this.setState({isLiked: true, isDisliked: false})
+  }
+
+  updateDislikeStatus = () => {
+    this.setState({isLiked: false, isDisliked: true})
+  }
+
+  updateSavedStatus = () => {
+    this.setState(prevState => ({isSaved: !prevState.isSaved}))
+  }
+
+  updateSavedVideos = videoDetails => {
+    const {savedVideos} = this.state
+    if (savedVideos.includes(videoDetails)) {
+      const filteredSavedVideos = savedVideos.filter(
+        each => each.id !== videoDetails.id,
+      )
+      this.setState({savedVideos: filteredSavedVideos, isSaved: false})
+    } else {
+      this.setState({
+        savedVideos: [...savedVideos, videoDetails],
+        isSaved: true,
+      })
+    }
+  }
+
   render() {
-    const {isDarkTheme} = this.state
+    const {isDarkTheme, isLiked, isDisliked, isSaved, savedVideos} = this.state
     return (
       <NxtWatchContext.Provider
-        value={{isDarkTheme, changeTheme: this.changeTheme}}
+        value={{
+          isDarkTheme,
+          changeTheme: this.changeTheme,
+          isLiked,
+          updateLikeStatus: this.updateLikeStatus,
+          isDisliked,
+          updateDislikeStatus: this.updateDislikeStatus,
+          isSaved,
+          updateSavedStatus: this.updateSavedStatus,
+          savedVideos,
+          updateSavedVideos: this.updateSavedVideos,
+        }}
       >
         <Switch>
           <Route exact path="/login" component={LoginForm} />
@@ -33,7 +78,7 @@ class App extends Component {
           <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
           <ProtectedRoute
             exact
-            path="/videos:id"
+            path="/videos/:id"
             component={VideoItemDetails}
           />
           <Route exact path="/not-found" component={NotFound} />

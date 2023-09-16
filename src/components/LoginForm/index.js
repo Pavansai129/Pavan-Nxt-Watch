@@ -44,24 +44,24 @@ class LoginForm extends Component {
     this.setState({showErrorMsg: true, errorMsg})
   }
 
-  onClickCheckbox = () => {
-    this.setState({showPassword: true})
+  onClickCheckbox = event => {
+    this.setState({showPassword: event.target.checked})
   }
 
   onClickLogin = async event => {
     event.preventDefault()
     const {username, password} = this.state
     const userCredentials = {username, password}
-    const apiUrl = 'https://apis.ccbp.in/login'
+    const loginApiUrl = 'https://apis.ccbp.in/login'
     const options = {
       method: 'POST',
       body: JSON.stringify(userCredentials),
     }
-    const response = await fetch(apiUrl, options)
+    const response = await fetch(loginApiUrl, options)
     const data = await response.json()
     console.log(data)
     if (response.ok === true) {
-      this.onLoginSuccess(data.jwtToken)
+      this.onLoginSuccess(data.jwt_token)
     } else {
       this.onLoginFailure(data.error_msg)
     }
@@ -101,6 +101,7 @@ class LoginForm extends Component {
                       value={username}
                       placeholder="Username"
                       fontColor={isDarkTheme}
+                      bgColor={isDarkTheme}
                       onChange={this.onChangeUsername}
                     />
                   </InputLabelContainer>
@@ -114,6 +115,7 @@ class LoginForm extends Component {
                       value={password}
                       placeholder="Password"
                       fontColor={isDarkTheme}
+                      bgColor={isDarkTheme}
                       onChange={this.onChangePassword}
                     />
                   </InputLabelContainer>
