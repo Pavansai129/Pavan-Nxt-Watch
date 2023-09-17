@@ -3,12 +3,10 @@ import React from 'react'
 const NxtWatchContext = React.createContext({
   isDarkTheme: false,
   changeTheme: () => {},
-  isLiked: false,
-  updateLikeStatus: () => {},
-  isDisliked: false,
-  updateDislikeStatus: () => {},
-  isSaved: false,
-  updateSavedStatus: () => {},
+  likedVideos: [],
+  updateLikedVideos: () => {},
+  dislikedVideos: [],
+  updateDislikedVideos: () => {},
   savedVideos: [],
   updateSavedVideos: () => {},
 })

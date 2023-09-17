@@ -45,23 +45,27 @@ const RenderVideoItem = props => {
         const {
           isDarkTheme,
           updateSavedVideos,
-          updateLikeStatus,
-          updateDislikeStatus,
-          isLiked,
-          isDisliked,
-          isSaved,
+          updateLikedVideos,
+          updateDislikedVideos,
+          likedVideos,
+          dislikedVideos,
+          savedVideos,
         } = value
-        const saveStatusText = isSaved ? 'Saved' : 'Save'
+        const saveStatusText = savedVideos.find(
+          each => each.id === videoDetails.id,
+        )
+          ? 'Saved'
+          : 'Save'
         const onClickSave = () => {
           updateSavedVideos(videoDetails)
         }
 
         const onClickLike = () => {
-          updateLikeStatus(videoDetails)
+          updateLikedVideos(videoDetails)
         }
 
         const onClickDislike = () => {
-          updateDislikeStatus(videoDetails)
+          updateDislikedVideos(videoDetails)
         }
         return (
           <VideoItemContainer>
@@ -89,19 +93,31 @@ const RenderVideoItem = props => {
                 <ButtonsContainer>
                   <LikeButton
                     onClick={onClickLike}
-                    fontColor={isLiked ? '#2563eb' : '#64748b'}
+                    fontColor={
+                      likedVideos.find(each => each.id === videoDetails.id)
+                        ? '#2563eb'
+                        : '#64748b'
+                    }
                   >
                     <AiOutlineLike /> Like
                   </LikeButton>
                   <DisLikeButton
                     onClick={onClickDislike}
-                    fontColor={isDisliked ? '#2563eb' : '#64748b'}
+                    fontColor={
+                      dislikedVideos.find(each => each.id === videoDetails.id)
+                        ? '#2563eb'
+                        : '#64748b'
+                    }
                   >
                     <BiDislike /> Dislike
                   </DisLikeButton>
                   <SaveButton
                     onClick={onClickSave}
-                    fontColor={isSaved ? '#2563eb' : '#64748b'}
+                    fontColor={
+                      savedVideos.find(each => each.id === videoDetails.id)
+                        ? '#2563eb'
+                        : '#64748b'
+                    }
                   >
                     <BiListPlus /> {saveStatusText}
                   </SaveButton>

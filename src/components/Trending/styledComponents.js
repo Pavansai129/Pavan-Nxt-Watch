@@ -3,10 +3,12 @@ import styled from 'styled-components'
 export const TrendingBodyContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   margin: 0;
   border: none;
   width: 100%;
-  margin-top: 100px;
+  min-height: 91vh;
+  margin-top: 9vh;
   background-color: ${props => (props.bgColor ? '#0f0f0f' : '#f9f9f9')};
   @media screen and (min-width: 768px) {
     margin-left: 250px;
@@ -17,7 +19,9 @@ export const TrendingVideosContainer = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
+  overflow-y: scroll;
+  height: 100%;
+  background-color: ${props => (props.bgColor ? '#181818' : '#f9f9f9')};
 `
 
 export const HomePageContainer = styled.div`
@@ -29,7 +33,8 @@ export const TrendingBanner = styled.div`
   align-items: center;
   gap: 20px;
   padding: 20px;
-  background-color: ${props => (props.bgColor ? '#181818' : '#e2e8f0')} @media
+  background-color: ${props => (props.bgColor ? '#181818' : '#ffffff')}};
+   @media
     screen and (min-width: 768px) {
     padding: 30px;
   }

@@ -1,7 +1,13 @@
 import styled from 'styled-components'
 
 export const VideoItemCard = styled.li`
-  padding: 0;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    width: 300px;
+    margin: 5px;
+    flex-grow: 1;
+  }
 `
 
 export const VideoItemContainer = styled.div`
@@ -9,8 +15,7 @@ export const VideoItemContainer = styled.div`
   flex-direction: column;
   width: 100%;
   @media screen and (min-width: 768px) {
-    width: 330px;
-    gap: 20px;
+    width: 300px;
   }
 `
 export const VideoItemThumbnailImage = styled.img`
@@ -22,8 +27,8 @@ export const DetailsContainer = styled.div`
   flex-direction: row;
   align-items: flex-start;
   padding: 10px;
+  width: 100%;
   border: none;
-  background: none;
 `
 export const ChannelProfileImage = styled.img`
   height: 40px;
@@ -35,6 +40,7 @@ export const ChannelProfileImage = styled.img`
 export const VideoDataContainer = styled.div`
   padding-left: 10px;
   border: none;
+  width: 100%;
 `
 
 export const VideoTitle = styled.p`

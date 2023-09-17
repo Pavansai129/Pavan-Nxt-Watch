@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 
 export const GamingVideoItemContainer = styled.div`
-  width: 120px;
+  width: 150px;
+  //   flex-grow: 1;
+  margin: 5px;
   @media screen and (min-width: 768px) {
     width: 200px;
   }
@@ -9,7 +11,7 @@ export const GamingVideoItemContainer = styled.div`
 export const GamingDetailsContainer = styled.div`
   width: 100%;
 `
-export const GamingVideoTitle = styled.h1`
+export const GamingVideoTitle = styled.p`
   font-size: 12px;
   color: ${props => (props.fontColor ? '#ffffff' : '#181818')};
   background-color: transparent;

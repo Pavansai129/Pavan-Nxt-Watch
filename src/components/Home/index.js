@@ -94,7 +94,7 @@ class Home extends Component {
   }
 
   getHomeVideos = async () => {
-    this.setState({apiStatus: apiStatusConstants.loading})
+    this.setState({apiStatus: apiStatusConstants.inProgress})
     const {searchInput} = this.state
     const homeApiUrl = `https://apis.ccbp.in/videos/all?search=${searchInput}`
     const jwtToken = Cookies.get('jwt_token')
@@ -105,19 +105,20 @@ class Home extends Component {
       },
     }
     const response = await fetch(homeApiUrl, options)
-    const data = await response.json()
-    const updatedHomeVideos = data.videos.map(each => ({
-      channel: {
-        name: each.channel.name,
-        profileImageUrl: each.channel.profile_image_url,
-      },
-      id: each.id,
-      publishedAt: each.published_at,
-      thumbnailUrl: each.thumbnail_url,
-      title: each.title,
-      viewCount: each.view_count,
-    }))
     if (response.ok === true) {
+      const data = await response.json()
+      const updatedHomeVideos = data.videos.map(each => ({
+        channel: {
+          name: each.channel.name,
+          profileImageUrl: each.channel.profile_image_url,
+        },
+        id: each.id,
+        publishedAt: each.published_at,
+        thumbnailUrl: each.thumbnail_url,
+        title: each.title,
+        viewCount: each.view_count,
+      }))
+
       this.setState({
         apiStatus: apiStatusConstants.success,
         homeVideos: updatedHomeVideos,

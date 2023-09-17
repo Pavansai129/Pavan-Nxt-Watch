@@ -10,8 +10,8 @@ import {IoMdClose} from 'react-icons/io'
 import {AiFillHome} from 'react-icons/ai'
 import {BiListPlus} from 'react-icons/bi'
 import {SiYoutubegaming} from 'react-icons/si'
+import {GamingBodyContainer} from './styledComponents'
 import {
-  TrendingBodyContainer,
   TrendingBanner,
   TrendingIcon,
   TrendingText,
@@ -83,7 +83,7 @@ class Gaming extends Component {
   }
 
   getGamingVideos = async () => {
-    this.setState({apiStatus: apiStatusConstants.loading})
+    this.setState({apiStatus: apiStatusConstants.inProgress})
     const homeApiUrl = 'https://apis.ccbp.in/videos/gaming'
     const jwtToken = Cookies.get('jwt_token')
     const options = {
@@ -93,14 +93,15 @@ class Gaming extends Component {
       },
     }
     const response = await fetch(homeApiUrl, options)
-    const data = await response.json()
-    const updatedGamingVideos = data.videos.map(each => ({
-      id: each.id,
-      thumbnailUrl: each.thumbnail_url,
-      title: each.title,
-      viewCount: each.view_count,
-    }))
+
     if (response.ok === true) {
+      const data = await response.json()
+      const updatedGamingVideos = data.videos.map(each => ({
+        id: each.id,
+        thumbnailUrl: each.thumbnail_url,
+        title: each.title,
+        viewCount: each.view_count,
+      }))
       this.setState({
         apiStatus: apiStatusConstants.success,
         gamingVideos: updatedGamingVideos,
@@ -547,10 +548,7 @@ class Gaming extends Component {
               {this.renderHeader()}
               <LeftMenubarAndHomeVideosContainer>
                 {this.renderLeftMenubar()}
-                <TrendingBodyContainer
-                  data-testid="gaming"
-                  bgColor={isDarkTheme}
-                >
+                <GamingBodyContainer data-testid="gaming" bgColor={isDarkTheme}>
                   <TrendingBanner bgColor={isDarkTheme}>
                     <TrendingIcon bgColor={isDarkTheme}>
                       <SiYoutubegaming color="#ff0000" size="25px" />
@@ -558,7 +556,7 @@ class Gaming extends Component {
                     <TrendingText fontColor={isDarkTheme}>Gaming</TrendingText>
                   </TrendingBanner>
                   {this.renderGamingVideos()}
-                </TrendingBodyContainer>
+                </GamingBodyContainer>
               </LeftMenubarAndHomeVideosContainer>
             </HomePageContainer>
           )

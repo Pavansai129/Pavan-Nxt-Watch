@@ -77,7 +77,7 @@ class VideoItemDetails extends Component {
   }
 
   getVideoItemDetails = async () => {
-    this.setState({apiStatus: apiStatusConstants.loading})
+    this.setState({apiStatus: apiStatusConstants.inProgress})
     const {match} = this.props
     const {params} = match
     const {id} = params
@@ -91,21 +91,22 @@ class VideoItemDetails extends Component {
     }
     const response = await fetch(homeApiUrl, options)
     const data = await response.json()
-    const updatedVideoDetails = {
-      channel: {
-        name: data.video_details.channel.name,
-        profileImageUrl: data.video_details.channel.profile_image_url,
-        subscriberCount: data.video_details.channel.subscriber_count,
-      },
-      id: data.video_details.id,
-      publishedAt: data.video_details.published_at,
-      thumbnailUrl: data.video_details.thumbnail_url,
-      title: data.video_details.title,
-      viewCount: data.video_details.view_count,
-      description: data.video_details.description,
-      videoUrl: data.video_details.video_url,
-    }
+
     if (response.ok === true) {
+      const updatedVideoDetails = {
+        channel: {
+          name: data.video_details.channel.name,
+          profileImageUrl: data.video_details.channel.profile_image_url,
+          subscriberCount: data.video_details.channel.subscriber_count,
+        },
+        id: data.video_details.id,
+        publishedAt: data.video_details.published_at,
+        thumbnailUrl: data.video_details.thumbnail_url,
+        title: data.video_details.title,
+        viewCount: data.video_details.view_count,
+        description: data.video_details.description,
+        videoUrl: data.video_details.video_url,
+      }
       this.setState({
         apiStatus: apiStatusConstants.success,
         videoDetails: updatedVideoDetails,

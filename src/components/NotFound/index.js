@@ -422,7 +422,7 @@ class NotFound extends Component {
                       Page Not Found
                     </FailureHeading>
                     <FailureCaption fontColor={isDarkTheme}>
-                      We are sorry, the page you requested could not be found
+                      we are sorry, the page you requested could not be found.
                     </FailureCaption>
                   </FailureViewContainer>
                 </HomeBodyContainer>

@@ -5,7 +5,8 @@ export const GamingBodyContainer = styled.div`
   flex-direction: column;
   border: none;
   width: 100%;
-  margin-top: 100px;
+  overflow: scroll;
+  margin-top: 9vh;
   background-color: ${props => (props.bgColor ? '#0f0f0f' : '#f9f9f9')};
   @media screen and (min-width: 768px) {
     margin-left: 250px;

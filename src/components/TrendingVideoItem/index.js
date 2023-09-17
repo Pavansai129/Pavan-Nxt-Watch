@@ -3,13 +3,13 @@ import {BsDot} from 'react-icons/bs'
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict'
 import NxtWatchContext from '../../context/NxtWatchContext'
 import {
+  TrendingVideoItemCard,
+  TrendingDetailsContainer,
   TrendingVideoItemContainer,
   TrendingVideoItemThumbnailImage,
   TrendingChannelProfileImage,
 } from './styledComponents'
 import {
-  VideoItemCard,
-  DetailsContainer,
   VideoDataContainer,
   VideoTitle,
   NameViewsPublishedContainer,
@@ -35,14 +35,14 @@ const TrendingVideoItem = props => {
       {value => {
         const {isDarkTheme} = value
         return (
-          <VideoItemCard>
+          <TrendingVideoItemCard>
             <Link to={`/videos/${id}`}>
               <TrendingVideoItemContainer>
                 <TrendingVideoItemThumbnailImage
                   src={thumbnailUrl}
                   alt="video thumbnail"
                 />
-                <DetailsContainer>
+                <TrendingDetailsContainer>
                   <TrendingChannelProfileImage
                     src={profileImageUrl}
                     alt="channel logo"
@@ -71,10 +71,10 @@ const TrendingVideoItem = props => {
                       </ViewsPublishedContainer>
                     </NameViewsPublishedContainer>
                   </VideoDataContainer>
-                </DetailsContainer>
+                </TrendingDetailsContainer>
               </TrendingVideoItemContainer>
             </Link>
-          </VideoItemCard>
+          </TrendingVideoItemCard>
         )
       }}
     </NxtWatchContext.Consumer>

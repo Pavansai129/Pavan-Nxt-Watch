@@ -16,9 +16,8 @@ import NxtWatchContext from './context/NxtWatchContext'
 class App extends Component {
   state = {
     isDarkTheme: false,
-    isLiked: false,
-    isDisliked: false,
-    isSaved: false,
+    likedVideos: [],
+    dislikedVideos: [],
     savedVideos: [],
   }
 
@@ -26,46 +25,76 @@ class App extends Component {
     this.setState(prevState => ({isDarkTheme: !prevState.isDarkTheme}))
   }
 
-  updateLikeStatus = () => {
-    this.setState({isLiked: true, isDisliked: false})
+  updateLikedVideos = videoDetails => {
+    const {likedVideos, dislikedVideos} = this.state
+    const video = likedVideos.find(each => each.id === videoDetails.id)
+    if (video) {
+      const filteredLikedVideos = likedVideos.filter(
+        each => each.id !== videoDetails.id,
+      )
+      this.setState({
+        likedVideos: filteredLikedVideos,
+        // dislikedVideos: [...dislikedVideos, videoDetails],
+      })
+    } else {
+      const filteredDislikedVideos = dislikedVideos.filter(
+        each => each.id !== videoDetails.id,
+      )
+      this.setState({
+        likedVideos: [...likedVideos, videoDetails],
+        dislikedVideos: filteredDislikedVideos,
+      })
+    }
   }
 
-  updateDislikeStatus = () => {
-    this.setState({isLiked: false, isDisliked: true})
-  }
-
-  updateSavedStatus = () => {
-    this.setState(prevState => ({isSaved: !prevState.isSaved}))
+  updateDislikedVideos = videoDetails => {
+    const {dislikedVideos, likedVideos} = this.state
+    const video = dislikedVideos.find(each => each.id === videoDetails.id)
+    if (video) {
+      const filteredDislikedVideos = dislikedVideos.filter(
+        each => each.id !== videoDetails.id,
+      )
+      this.setState({
+        dislikedVideos: filteredDislikedVideos,
+        // likedVideos: [...likedVideos, videoDetails],
+      })
+    } else {
+      const filteredLikedVideos = likedVideos.filter(
+        each => each.id !== videoDetails.id,
+      )
+      this.setState({
+        dislikedVideos: [...dislikedVideos, videoDetails],
+        likedVideos: filteredLikedVideos,
+      })
+    }
   }
 
   updateSavedVideos = videoDetails => {
     const {savedVideos} = this.state
-    if (savedVideos.includes(videoDetails)) {
+    const video = savedVideos.find(each => each.id === videoDetails.id)
+    if (video) {
       const filteredSavedVideos = savedVideos.filter(
         each => each.id !== videoDetails.id,
       )
-      this.setState({savedVideos: filteredSavedVideos, isSaved: false})
+      this.setState({savedVideos: filteredSavedVideos})
     } else {
       this.setState({
         savedVideos: [...savedVideos, videoDetails],
-        isSaved: true,
       })
     }
   }
 
   render() {
-    const {isDarkTheme, isLiked, isDisliked, isSaved, savedVideos} = this.state
+    const {isDarkTheme, likedVideos, dislikedVideos, savedVideos} = this.state
     return (
       <NxtWatchContext.Provider
         value={{
           isDarkTheme,
           changeTheme: this.changeTheme,
-          isLiked,
-          updateLikeStatus: this.updateLikeStatus,
-          isDisliked,
-          updateDislikeStatus: this.updateDislikeStatus,
-          isSaved,
-          updateSavedStatus: this.updateSavedStatus,
+          likedVideos,
+          updateLikedVideos: this.updateLikedVideos,
+          dislikedVideos,
+          updateDislikedVideos: this.updateDislikedVideos,
           savedVideos,
           updateSavedVideos: this.updateSavedVideos,
         }}

@@ -15,8 +15,9 @@ export const LeftNavBarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 250px;
-  height: 90vh;
-  margin-top: 100px;
+  height: 91vh;
+  margin-top: 9vh;
+  padding-top: 30px;
   flex-shrink: 0;
   border: none;
   position: fixed;
@@ -52,7 +53,9 @@ export const HomeBodyContainer = styled.div`
   flex-direction: column;
   border: none;
   width: 100%;
-  margin-top: 100px;
+  min-height: 91vh;
+  overflow-y: scroll;
+  margin-top: 9vh;
   background-color: ${props => (props.bgColor ? '#181818' : '#f9f9f9')};
   @media screen and (min-width: 768px) {
     margin-left: 250px;
@@ -163,12 +166,11 @@ export const SearchButton = styled.button`
 `
 export const HomeVideosContainer = styled.ul`
   display: flex;
+  justify-content: flex-start;
   flex-wrap: wrap;
   min-width: 100%;
-  height: 100vh;
+  height: 91vh;
   border: none;
-  gap: 20px;
-  padding: 20px;
   background-color: ${props => (props.bgColor ? '#181818' : '#f9f9f9')};
 `
 export const LoadingViewContainer = styled.div`

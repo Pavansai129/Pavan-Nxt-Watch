@@ -451,6 +451,9 @@ class SavedVideos extends Component {
                         <FailureCaption fontColor={isDarkTheme}>
                           You can see your videos while watching them
                         </FailureCaption>
+                        <FailureCaption fontColor={isDarkTheme}>
+                          Save your videos by clicking a button
+                        </FailureCaption>
                       </FailureViewContainer>
                     )}
                   </TrendingVideosContainer>

@@ -1,27 +1,29 @@
 import styled from 'styled-components'
 
 export const Navbar = styled.nav`
-  height: 100px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 30px 5px 30px;
+  padding: 20px 30px 20px 30px;
+  height: 9vh;
   border: none;
   position: fixed;
   background-color: ${props => (props.bgColor ? '#0f0f0f' : '#ffffff')};
 `
 
 export const WebsiteLogo = styled.img`
-  height: 25px;
+  height: 20px;
+  @media screen and (min-width: 768px) {
+    height: 25px;
+  }
 `
 export const SmNavItemsList = styled.ul`
   height: 40px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 15px;
   height: 50px;
+  gap: 20px;
   border: none;
   @media screen and (min-width: 768px) {
     display: none;
@@ -30,7 +32,6 @@ export const SmNavItemsList = styled.ul`
 export const MdNavItemsList = styled.ul`
   height: 40px;
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 50px;
   height: 50px;
