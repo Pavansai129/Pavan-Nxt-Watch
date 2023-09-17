@@ -84,10 +84,10 @@ export const BannerContentContainer = styled.div`
 `
 
 export const NxtWatchLogo = styled.img`
-  height: 30px;
+  height: 50px;
   margin-bottom: 10px;
   @media screen and (max-width: 768px) {
-    height: 15px;
+    height: 20px;
   }
 `
 
@@ -99,7 +99,7 @@ export const BannerText = styled.p`
   background-color: transparent;
   margin-bottom: 10px;
   @media screen and (max-width: 768px) {
-    font-size: 12px;
+    font-size: 14px;
   }
 `
 export const GetItNowButton = styled.button`
@@ -166,11 +166,11 @@ export const SearchButton = styled.button`
 `
 export const HomeVideosContainer = styled.ul`
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
   min-width: 100%;
   height: 91vh;
-  border: none;
   background-color: ${props => (props.bgColor ? '#181818' : '#f9f9f9')};
 `
 export const LoadingViewContainer = styled.div`

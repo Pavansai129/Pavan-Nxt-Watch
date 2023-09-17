@@ -1,15 +1,13 @@
 import {Link} from 'react-router-dom'
 import NxtWatchContext from '../../context/NxtWatchContext'
 import {
+  GamingVideoItemCard,
   GamingVideoItemContainer,
   GamingDetailsContainer,
   GamingVideoTitle,
   GamingVideoDataText,
 } from './styledComponents'
-import {
-  VideoItemCard,
-  VideoItemThumbnailImage,
-} from '../VideoItem/styledComponents'
+import {VideoItemThumbnailImage} from '../VideoItem/styledComponents'
 
 const GamingVideoItem = props => {
   const {videoItemDetails} = props
@@ -19,7 +17,7 @@ const GamingVideoItem = props => {
       {value => {
         const {isDarkTheme} = value
         return (
-          <VideoItemCard>
+          <GamingVideoItemCard>
             <Link to={`/videos/${id}`}>
               <GamingVideoItemContainer>
                 <VideoItemThumbnailImage
@@ -36,7 +34,7 @@ const GamingVideoItem = props => {
                 </GamingDetailsContainer>
               </GamingVideoItemContainer>
             </Link>
-          </VideoItemCard>
+          </GamingVideoItemCard>
         )
       }}
     </NxtWatchContext.Consumer>

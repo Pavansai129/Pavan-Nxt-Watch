@@ -1,9 +1,20 @@
 import styled from 'styled-components'
 
+export const GamingVideoItemCard = styled.li`
+  width: 40%;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  @media screen and (min-width: 768px) {
+    width: 200px;
+    margin: 5px;
+    // flex-grow: 1;
+  }
+`
+
 export const GamingVideoItemContainer = styled.div`
-  width: 150px;
-  //   flex-grow: 1;
-  margin: 5px;
+  width: 140px;
+  border: none;
+
   @media screen and (min-width: 768px) {
     width: 200px;
   }
