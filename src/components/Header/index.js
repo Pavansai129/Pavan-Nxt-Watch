@@ -139,8 +139,6 @@ const Header = props => {
 
           const onClickConfirm = () => {
             const {history} = props
-            console.log(props)
-            console.log(history)
             Cookies.remove('jwt_token')
             history.replace('/login')
           }

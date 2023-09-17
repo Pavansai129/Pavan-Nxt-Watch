@@ -118,7 +118,7 @@ export const PopupLogoutContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
+  backdrop-filter: blur(4px);
 `
 
 export const PopupLogoutCardContainer = styled.div`
@@ -126,16 +126,25 @@ export const PopupLogoutCardContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 90%;
   gap: 30px;
-  padding: 25px 40px 25px 40px;
+  padding: 30px 25px;
+  box-shadow: 0px 0px 5px grey;
   border-radius: 8px;
   background-color: ${props => (props.bgColor ? '#181818' : '#ffffff')};
+  @media screen and (min-width: 768px) {
+    width: auto;
+  }
 `
 export const PopupLogoutText = styled.p`
-  font-size: 22px;
+  font-size: 15px;
   border: none;
-  font-weight: 500px;
+  text-align: center;
+  font-weight: 300px;
   color: ${props => (props.fontColor ? '#ffffff' : '#181818')};
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
 `
 export const PopupLogoutButtonsContainer = styled.div`
   display: flex;
@@ -144,9 +153,9 @@ export const PopupLogoutButtonsContainer = styled.div`
   gap: 30px;
 `
 export const CancelButton = styled.button`
-  height: 45px;
-  width: 100px;
-  font-size: 18px;
+  height: 30px;
+  width: 80px;
+  font-size: 12px;
   font-weight: 500px;
   border-radius: 8px;
   outline: none;
@@ -154,11 +163,16 @@ export const CancelButton = styled.button`
   color: #616e7c;
   border: 1px solid #616e7c;
   background-color: transparent;
+  @media screen and (min-width: 768px) {
+    height: 45px;
+    width: 100px;
+    font-size: 18px;
+  }
 `
 export const ConfirmButton = styled.button`
-  height: 45px;
-  width: 100px;
-  font-size: 18px;
+  height: 30px;
+  width: 80px;
+  font-size: 12px;
   font-weight: 500px;
   border-radius: 5px;
   outline: none;
@@ -166,4 +180,9 @@ export const ConfirmButton = styled.button`
   color: #ffffff;
   border: none;
   background-color: #4f46e5;
+  @media screen and (min-width: 768px) {
+    height: 45px;
+    width: 100px;
+    font-size: 18px;
+  }
 `
