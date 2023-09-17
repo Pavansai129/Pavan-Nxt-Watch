@@ -44,7 +44,7 @@ export const VideoDataContainer = styled.div`
 `
 
 export const VideoTitle = styled.p`
-  font-size: 16px;
+  font-size: 14px;
   color: ${props => (props.fontColor ? '#ffffff' : '#181818')};
   background-color: transparent;
   line-height: 1.2;
@@ -55,9 +55,11 @@ export const VideoTitle = styled.p`
 `
 export const NameViewsPublishedContainer = styled.div`
   display: flex;
+  align-items: center;
   gap: 5px;
   @media screen and (min-width: 768px) {
     flex-direction: column;
+    align-items: flex-start;
   }
 `
 export const ViewsPublishedContainer = styled.div`
@@ -77,7 +79,7 @@ export const DotContainer = styled.div`
 `
 
 export const ChannelName = styled.p`
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 300px;
   color: ${props => (props.fontColor ? '#475569' : ' #616e7c')};
   background: none;
@@ -88,7 +90,7 @@ export const ChannelName = styled.p`
   }
 `
 export const VideoDataText = styled.p`
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 300px;
   color: ${props => (props.fontColor ? '#475569' : ' #616e7c')};
   background: none;
