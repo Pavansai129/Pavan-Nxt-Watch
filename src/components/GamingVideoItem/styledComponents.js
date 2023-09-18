@@ -2,12 +2,9 @@ import styled from 'styled-components'
 
 export const GamingVideoItemCard = styled.li`
   width: 40%;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  margin: 10px;
   @media screen and (min-width: 768px) {
     width: 200px;
-    margin: 5px;
-    // flex-grow: 1;
   }
 `
 

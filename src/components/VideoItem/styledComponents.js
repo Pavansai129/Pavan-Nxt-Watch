@@ -3,10 +3,9 @@ import styled from 'styled-components'
 export const VideoItemCard = styled.li`
   width: 100%;
   margin-bottom: 10px;
-  border: 1px solid red;
   @media screen and (min-width: 768px) {
     width: 300px;
-    margin: 5px;
+    margin-right: 10px;
     flex-grow: 1;
   }
 `
